@@ -8,7 +8,7 @@ var routes = {
   'attachments': require('./lib/routes/attachments.js')
 };
 
-module.exports = function(PouchDB) {
+module.exports = function(db) {
 
   var app = express.Router();
 
@@ -21,20 +21,20 @@ module.exports = function(PouchDB) {
     next();
   });
 
-  app.get('/', function (req, res) {
-    res.status(200).send({'pouchdb-express-router': 'Welcome!'});
-  });
+  // app.get('/', function (req, res) {
+  //   res.status(200).send({'pouchdb-express-router': 'Welcome!'});
+  // });
+  //
+  // app.get('/_session', function (req, res) {
+  //   res.status(200).send({
+  //     'ok': true,
+  //     'userCtx':{"name":null,"roles":["_admin"]}
+  //   });
+  // });
 
-  app.get('/_session', function (req, res) {
-    res.status(200).send({
-      'ok': true,
-      'userCtx':{"name":null,"roles":["_admin"]}
-    });
-  });
-
-  routes.db(app, PouchDB);
-  routes.attachments(app, PouchDB);
-  routes.document(app, PouchDB);
+  routes.db(app, db);
+  routes.attachments(app, db);
+  routes.document(app, db);
 
   app.use(function (req, res) {
     res.status(404).send( {
