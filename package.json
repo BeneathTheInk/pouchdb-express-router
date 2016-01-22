@@ -1,7 +1,8 @@
 {
-  "name": "pouchdb-express-router",
-  "version": "0.0.8",
+  "name": "@beneaththeink/pouchdb-express-router",
+  "version": "1.0.0",
   "description": "Provide minimal routing and functionality to provide a PouchDB server that replicates",
+  "private": true,
   "main": "index.js",
   "dependencies": {
     "extend": "~2.0.0",
